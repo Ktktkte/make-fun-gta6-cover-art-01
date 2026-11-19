@@ -3,20 +3,70 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Cover Snap</title>
+<title>Vice Sunset — GTA-style cover art maker</title>
+<link rel="icon" href="data:,">
 <link rel="stylesheet" href="./style.css">
 </head>
 <body>
 <main class="app">
-  <section class="controls">
-    <h1>Cover Snap</h1>
-    <p>A photo and a caption, made into a square cover.</p>
-    <label>Photo <input id="photo" type="file" accept="image/*"></label>
-    <label>Caption <input id="caption" type="text" maxlength="40" value="Sunset Heist"></label>
-    <button id="export" type="button">Export PNG 1080 x 1080</button>
+  <section class="controls" aria-label="Cover editor">
+    <h1>VICE SUNSET</h1>
+    <p class="lede">Your photo, a Vice City sunset, a bold caption — a poster to share.</p>
+
+    <fieldset>
+      <legend>1 · Post size</legend>
+      <div class="sizes" id="sizes">
+        <button type="button" data-size="square" class="on">Square<br>1080 × 1080</button>
+        <button type="button" data-size="portrait">Portrait<br>1080 × 1350</button>
+        <button type="button" data-size="wide">Wide<br>1920 × 1080</button>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>2 · Photos</legend>
+      <label class="check"><input id="one-photo" type="checkbox" checked> One photo fills all three panels</label>
+      <div class="panel" data-panel="0">
+        <strong>Hero panel — the big one</strong>
+        <label class="file">Choose photo <input type="file" accept="image/*"></label>
+        <label>Zoom <input type="range" min="1" max="3" step="0.05" value="1"></label>
+        <button type="button" class="center">Centre photo</button>
+      </div>
+      <div class="panel" data-panel="1">
+        <strong>Top small panel</strong>
+        <label class="file">Choose photo <input type="file" accept="image/*"></label>
+        <label>Zoom <input type="range" min="1" max="3" step="0.05" value="1"></label>
+        <button type="button" class="center">Centre photo</button>
+      </div>
+      <div class="panel" data-panel="2">
+        <strong>Bottom small panel</strong>
+        <label class="file">Choose photo <input type="file" accept="image/*"></label>
+        <label>Zoom <input type="range" min="1" max="3" step="0.05" value="1"></label>
+        <button type="button" class="center">Centre photo</button>
+      </div>
+      <p class="hint">Tip: drag a photo inside the preview to move it around its panel.</p>
+    </fieldset>
+
+    <fieldset>
+      <legend>3 · Words</legend>
+      <label>Caption <input id="caption" type="text" maxlength="32" value="VICE SUNSET"></label>
+      <label>Caption size <input id="caption-size" type="range" min="0.6" max="1.4" step="0.05" value="1"></label>
+      <div class="swatches" id="swatches" aria-label="Caption colour">
+        <button type="button" data-color="#ffffff" class="on" style="background:#ffffff" aria-label="White"></button>
+        <button type="button" data-color="#ffe9a8" style="background:#ffe9a8" aria-label="Sun yellow"></button>
+        <button type="button" data-color="#37f6ff" style="background:#37f6ff" aria-label="Neon cyan"></button>
+        <button type="button" data-color="#ff7ad9" style="background:#ff7ad9" aria-label="Neon pink"></button>
+      </div>
+      <label>Tagline <input id="tagline" type="text" maxlength="40" value="A POSTER BY YOU"></label>
+    </fieldset>
+
+    <button id="export" type="button" class="export">Export PNG</button>
     <p id="status" role="status"></p>
+    <p class="fine">Photos never leave your machine. Original art only — no game logos, artwork or fonts.</p>
   </section>
-  <canvas id="cover" width="1080" height="1080" aria-label="The cover"></canvas>
+  <section class="preview" aria-label="Live preview">
+    <canvas id="cover" width="1080" height="1080"></canvas>
+    <p class="preview-note">Live preview — drag a photo to reposition it</p>
+  </section>
 </main>
 <script type="module" src="./src/main.js"></script>
 </body>
