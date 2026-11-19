@@ -1,5 +1,5 @@
-/* Vice Sunset — editor chrome. Deep purple page, neon pink/cyan accents, the
-   poster itself doing the bright work. The preview canvas is sized by the
+/* Vice Sunset v2 — editor chrome. Deep purple page, neon pink/cyan accents,
+   the poster itself doing the bright work. The preview canvas is sized by the
    poster's aspect ratio through a CSS variable the page sets. */
 :root {
   --ink: #f5eefc;
@@ -15,6 +15,11 @@ html, body { margin: 0; min-height: 100%; background: #150826; color: var(--ink)
 .controls { width: 320px; flex: none; display: flex; flex-direction: column; gap: 16px; }
 .controls h1 { margin: 0; font-family: Anton, 'Arial Narrow', sans-serif; font-size: 34px; letter-spacing: 2px; color: var(--amber); text-shadow: 0 0 18px rgba(255, 46, 136, 0.55); }
 .lede { margin: 0; color: var(--muted); }
+.undorow { display: flex; gap: 8px; align-items: center; }
+.undorow button { font: inherit; font-size: 13px; font-weight: 700; padding: 6px 12px; border: 1px solid var(--line); border-radius: 6px; background: var(--panel); color: var(--ink); cursor: pointer; }
+.undorow button:disabled { opacity: 0.4; cursor: default; }
+.undorow button:not(:disabled):hover { border-color: var(--cyan); color: var(--cyan); }
+.undohint { font-size: 12px; color: var(--muted); }
 fieldset { margin: 0; padding: 14px; border: 1px solid var(--line); border-radius: 10px; background: var(--panel); display: flex; flex-direction: column; gap: 12px; }
 legend { font-weight: 700; color: var(--cyan); padding: 0 6px; }
 label { display: flex; flex-direction: column; gap: 6px; font-weight: 600; font-size: 13px; }
@@ -25,6 +30,10 @@ input[type=file] { font: inherit; font-weight: 400; }
 .sizes { display: flex; gap: 8px; }
 .sizes button { flex: 1; font: inherit; font-size: 12px; font-weight: 700; padding: 8px 4px; border: 1px solid var(--line); border-radius: 6px; background: #150826; color: var(--ink); cursor: pointer; }
 .sizes button.on { border-color: var(--cyan); color: var(--cyan); box-shadow: 0 0 10px rgba(55, 246, 255, 0.35); }
+.layouts, .grades { display: flex; flex-wrap: wrap; gap: 8px; }
+.layouts button, .grades button { font: inherit; font-size: 12px; font-weight: 700; padding: 8px 10px; border: 1px solid var(--line); border-radius: 6px; background: #150826; color: var(--ink); cursor: pointer; }
+.layouts button.on, .grades button.on { border-color: var(--pink); color: var(--amber); box-shadow: 0 0 10px rgba(255, 46, 136, 0.35); }
+.grades button.on { border-color: var(--cyan); color: var(--cyan); box-shadow: 0 0 10px rgba(55, 246, 255, 0.35); }
 .panel { display: flex; flex-direction: column; gap: 8px; padding: 10px; border: 1px dashed var(--line); border-radius: 8px; }
 .panel strong { font-size: 13px; }
 .file { font-weight: 600; }

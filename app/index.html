@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Vice Sunset — GTA-style cover art maker</title>
+<title>Vice Sunset v2 — GTA-style cover art maker</title>
 <link rel="icon" href="data:,">
 <link rel="stylesheet" href="./style.css">
 </head>
@@ -11,7 +11,12 @@
 <main class="app">
   <section class="controls" aria-label="Cover editor">
     <h1>VICE SUNSET</h1>
-    <p class="lede">Your photo, a Vice City sunset, a bold caption — a poster to share.</p>
+    <p class="lede">Your photo, a Vice City sunset, bold lettering — a five-panel poster to share.</p>
+    <div class="undorow">
+      <button type="button" id="undo" disabled>↩ Undo</button>
+      <button type="button" id="redo" disabled>↪ Redo</button>
+      <span class="undohint">Every change can be undone</span>
+    </div>
 
     <fieldset>
       <legend>1 · Post size</legend>
@@ -23,22 +28,44 @@
     </fieldset>
 
     <fieldset>
-      <legend>2 · Photos</legend>
-      <label class="check"><input id="one-photo" type="checkbox" checked> One photo fills all three panels</label>
+      <legend>2 · Layout — five panels</legend>
+      <div class="layouts" id="layouts">
+        <button type="button" data-layout="hero" class="on">Hero + four</button>
+        <button type="button" data-layout="fullbleed">Full bleed</button>
+        <button type="button" data-layout="grid">Poster grid</button>
+        <button type="button" data-layout="tilted">Tilted snapshots</button>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>3 · Photos</legend>
+      <label class="check"><input id="one-photo" type="checkbox" checked> One photo fills all five panels</label>
       <div class="panel" data-panel="0">
-        <strong>Hero panel — the big one</strong>
+        <strong>Panel 1 — hero, the big one</strong>
         <label class="file">Choose photo <input type="file" accept="image/*"></label>
         <label>Zoom <input type="range" min="1" max="3" step="0.05" value="1"></label>
         <button type="button" class="center">Centre photo</button>
       </div>
       <div class="panel" data-panel="1">
-        <strong>Top small panel</strong>
+        <strong>Panel 2</strong>
         <label class="file">Choose photo <input type="file" accept="image/*"></label>
         <label>Zoom <input type="range" min="1" max="3" step="0.05" value="1"></label>
         <button type="button" class="center">Centre photo</button>
       </div>
       <div class="panel" data-panel="2">
-        <strong>Bottom small panel</strong>
+        <strong>Panel 3</strong>
+        <label class="file">Choose photo <input type="file" accept="image/*"></label>
+        <label>Zoom <input type="range" min="1" max="3" step="0.05" value="1"></label>
+        <button type="button" class="center">Centre photo</button>
+      </div>
+      <div class="panel" data-panel="3">
+        <strong>Panel 4</strong>
+        <label class="file">Choose photo <input type="file" accept="image/*"></label>
+        <label>Zoom <input type="range" min="1" max="3" step="0.05" value="1"></label>
+        <button type="button" class="center">Centre photo</button>
+      </div>
+      <div class="panel" data-panel="4">
+        <strong>Panel 5</strong>
         <label class="file">Choose photo <input type="file" accept="image/*"></label>
         <label>Zoom <input type="range" min="1" max="3" step="0.05" value="1"></label>
         <button type="button" class="center">Centre photo</button>
@@ -47,15 +74,28 @@
     </fieldset>
 
     <fieldset>
-      <legend>3 · Words</legend>
+      <legend>4 · Colour grade</legend>
+      <div class="grades" id="grades">
+        <button type="button" data-grade="sunset" class="on">Sunset</button>
+        <button type="button" data-grade="neon">Neon</button>
+        <button type="button" data-grade="dusk">Dusk</button>
+        <button type="button" data-grade="mono">Mono noir</button>
+      </div>
+      <label class="check"><input id="poster-ink" type="checkbox"> Poster Ink — inked bands + halftone</label>
+      <label>Heat <input id="heat" type="range" min="0" max="100" step="1" value="70"></label>
+    </fieldset>
+
+    <fieldset>
+      <legend>5 · Words</legend>
       <label>Caption <input id="caption" type="text" maxlength="32" value="VICE SUNSET"></label>
       <label>Caption size <input id="caption-size" type="range" min="0.6" max="1.4" step="0.05" value="1"></label>
       <div class="swatches" id="swatches" aria-label="Caption colour">
-        <button type="button" data-color="#ffffff" class="on" style="background:#ffffff" aria-label="White"></button>
+        <button type="button" data-color="#ffffff" class="on" style="background:#ffffff" aria-label="Gradient title"></button>
         <button type="button" data-color="#ffe9a8" style="background:#ffe9a8" aria-label="Sun yellow"></button>
         <button type="button" data-color="#37f6ff" style="background:#37f6ff" aria-label="Neon cyan"></button>
         <button type="button" data-color="#ff7ad9" style="background:#ff7ad9" aria-label="Neon pink"></button>
       </div>
+      <label>Neon subtitle <input id="subtitle" type="text" maxlength="40" value="neon nights"></label>
       <label>Tagline <input id="tagline" type="text" maxlength="40" value="A POSTER BY YOU"></label>
     </fieldset>
 

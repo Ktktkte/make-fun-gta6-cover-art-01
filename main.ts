@@ -1,4 +1,4 @@
-// Vice Sunset — the entry program (Node 22, standard library only).
+// Vice Sunset v2 — the entry program (Node 22, standard library only).
 //
 // It hands the app in: copy this directory's app/ and screenshots/ into the
 // output folder and write the dossier.json the judge reads, built with the
