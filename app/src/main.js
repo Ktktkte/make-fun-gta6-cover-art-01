@@ -1,4 +1,4 @@
-// Vice Sunset v2 — the editor.
+// Vice Sunset v2 (fresh build) — the editor.
 //
 // Wires the page: photos per panel (or one photo for all five), drag to
 // reposition, zoom sliders, four layouts, four colour grades + Poster Ink,

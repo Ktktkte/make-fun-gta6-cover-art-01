@@ -40,8 +40,9 @@ Then open http://localhost:8080 in desktop Chrome.
 - `app/src/main.js` — editor wiring: uploads, drag-to-reposition, undo/redo
   history, export.
 - `app/src/shots.js` — deterministic `?shot=` scenes for the screenshots.
-- `app/samples/` — two model-made sample photos, free to use, for the
-  screenshots. `app/fonts/` — Anton (OFL).
+- `app/samples/` — two free-to-use sample photos (Unsplash, via picsum):
+  a neon boulevard at night and a canoe on a turquoise lake at sunset.
+  `app/fonts/` — Anton (OFL).
 
 ---
 

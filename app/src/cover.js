@@ -1,11 +1,11 @@
-// Vice Sunset v2 — the cover painter.
+// Vice Sunset v2 (fresh build) — the cover painter.
 //
-// Everything on the poster is drawn here in code: a five-panel grid in one
+// Every pixel of the poster is drawn here in code: a five-panel grid in one
 // of four layouts, a painted Vice City sunset (gradient sky, low sun, palm
 // silhouettes, neon lines) in one of four colour grades, plus a Poster Ink
 // treatment, grain and vignette. Photos are drawn inside the panels; a panel
 // with no photo yet shows the painted sunset instead, so the poster never
-// looks empty. No image is ever fetched from the network.
+// looks empty. Nothing is ever fetched from the network.
 
 export const SIZES = {
   square: { w: 1080, h: 1080, label: 'Square 1080 x 1080' },
@@ -20,8 +20,8 @@ export const LAYOUTS = {
   tilted: { label: 'Tilted snapshots' },
 };
 
-// Four colour grades. Each one drives the painted sky, the caption band,
-// the gradient title lettering and the tint photos get, so the whole poster
+// Four colour grades. Each one drives the painted sky, the caption band, the
+// gradient title lettering and the tint photos get, so the whole poster
 // shifts together when the grade changes.
 export const GRADES = {
   sunset: {
@@ -63,8 +63,8 @@ export const GRADES = {
 };
 
 // One poster is five panels above a caption band. The numbers below are
-// fractions of the poster's width and height, so the same grids work for
-// all three sizes. `rot` tilts a panel a few degrees, snapshot style.
+// fractions of the poster's width and height, so the same grids work for all
+// three sizes. `rot` tilts a panel a few degrees, snapshot style.
 function gridFor(size, layout) {
   const band = size === 'portrait'
     ? { y: 0.76, h: 0.24 }

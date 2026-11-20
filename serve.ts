@@ -1,4 +1,4 @@
-// Vice Sunset v2 — a small static file server for trying the app locally.
+// Vice Sunset v2 (fresh build) — a small static file server for trying the app locally.
 //
 //   node serve.ts            serves app/ on http://localhost:8080
 //   node serve.ts --port N   serves it on port N instead

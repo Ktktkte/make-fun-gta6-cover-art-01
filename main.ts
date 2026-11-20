@@ -1,4 +1,4 @@
-// Vice Sunset v2 — the entry program (Node 22, standard library only).
+// Vice Sunset v2 (fresh build) — the entry program (Node 22, standard library only).
 //
 // It hands the app in: copy this directory's app/ and screenshots/ into the
 // output folder and write the dossier.json the judge reads, built with the
@@ -17,6 +17,12 @@ import { buildDossier } from './vendor/makefun-app.ts';
 
 const here = fileURLToPath(new URL('.', import.meta.url));
 const out = process.env.MAKEFUN_OUTPUT_DIR ?? '/output';
+
+// Fail loudly instead of handing in a half-built entry: the app is not an
+// entry without its front page, and the dossier needs the screenshots.
+for (const needed of [join(here, 'app', 'index.html')]) {
+  if (!existsSync(needed)) throw new Error(`entry is incomplete: missing ${needed}`);
+}
 
 mkdirSync(out, { recursive: true });
 cpSync(join(here, 'app'), join(out, 'app'), { recursive: true });
