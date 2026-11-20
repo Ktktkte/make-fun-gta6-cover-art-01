@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vice Sunset — GTA-style Cover Maker</title>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">
+    <span class="brand-mark">VS</span>
+    <div>
+      <h1>VICE SUNSET</h1>
+      <p>Cover maker — five panels, one poster, zero uploads</p>
+    </div>
+  </div>
+  <div class="top-actions">
+    <button id="undoBtn" type="button" disabled>Undo</button>
+    <button id="redoBtn" type="button" disabled>Redo</button>
+    <button id="exportBtn" type="button" class="primary">Export PNG</button>
+  </div>
+</header>
+
+<main class="editor">
+  <aside class="tools" aria-label="Cover controls">
+    <section>
+      <h2>1 · Photos</h2>
+      <p class="hint">Click a panel to load a photo. Drag a photo on the cover to move it, scroll to zoom.</p>
+      <div class="slots">
+        <div class="panel-slot" data-panel="0"><span class="slot-name">Hero</span><span class="slot-state">painted art</span><input type="file" accept="image/*" hidden><button type="button" class="slot-clear" title="Remove photo">×</button></div>
+        <div class="panel-slot" data-panel="1"><span class="slot-name">Panel A</span><span class="slot-state">painted art</span><input type="file" accept="image/*" hidden><button type="button" class="slot-clear" title="Remove photo">×</button></div>
+        <div class="panel-slot" data-panel="2"><span class="slot-name">Panel B</span><span class="slot-state">painted art</span><input type="file" accept="image/*" hidden><button type="button" class="slot-clear" title="Remove photo">×</button></div>
+        <div class="panel-slot" data-panel="3"><span class="slot-name">Panel C</span><span class="slot-state">painted art</span><input type="file" accept="image/*" hidden><button type="button" class="slot-clear" title="Remove photo">×</button></div>
+        <div class="panel-slot" data-panel="4"><span class="slot-name">Panel D</span><span class="slot-state">painted art</span><input type="file" accept="image/*" hidden><button type="button" class="slot-clear" title="Remove photo">×</button></div>
+      </div>
+      <button id="loadSamplesBtn" type="button">Load the two sample photos</button>
+    </section>
+
+    <section>
+      <h2>2 · Layout</h2>
+      <div class="choices">
+        <button type="button" data-layout="hero" class="active">Hero</button>
+        <button type="button" data-layout="fullbleed">Fullbleed</button>
+        <button type="button" data-layout="grid">Grid</button>
+        <button type="button" data-layout="tilted">Tilted</button>
+      </div>
+    </section>
+
+    <section>
+      <h2>3 · Colour grade</h2>
+      <div class="choices">
+        <button type="button" data-grade="sunset" class="active">Sunset</button>
+        <button type="button" data-grade="neon">Neon</button>
+        <button type="button" data-grade="dusk">Dusk</button>
+        <button type="button" data-grade="mono">Mono noir</button>
+        <button type="button" data-grade="ink">Poster Ink</button>
+      </div>
+    </section>
+
+    <section>
+      <h2>4 · Caption</h2>
+      <label>Title <input id="titleInput" type="text" value="VICE SUNSET" maxlength="24"></label>
+      <label>Subtitle <input id="subtitleInput" type="text" value="LEONIDA • 2026" maxlength="32"></label>
+      <label>Tagline <input id="taglineInput" type="text" value="Two outlaws. One last score." maxlength="48"></label>
+    </section>
+
+    <section>
+      <h2>5 · Export size</h2>
+      <div class="choices">
+        <button type="button" data-size="square">1080 × 1080</button>
+        <button type="button" data-size="portrait">1080 × 1350</button>
+        <button type="button" data-size="wide" class="active">1920 × 1080</button>
+      </div>
+      <p class="hint">Exports a PNG at the exact size. Your photos never leave this machine.</p>
+    </section>
+  </aside>
+
+  <section class="preview" aria-label="Cover preview">
+    <canvas id="coverCanvas" width="1920" height="1080"></canvas>
+    <div class="heat" aria-label="Heat meter">
+      <span class="heat-label">HEAT</span>
+      <div class="heat-bar"><div id="heatFill" class="heat-fill"></div></div>
+      <span id="heatValue" class="heat-value">92</span>
+      <span id="heatWord" class="heat-word">BLAZING</span>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <p>Offline by design — no network requests, no uploads. Anton font under the SIL Open Font License. Sample photos are CC0.</p>
+</footer>
+
+<script src="src/cover.js"></script>
+<script src="src/main.js"></script>
+</body>
+</html>
