@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vice Sunset — GTA 6 Cover Maker</title>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">
+    <span class="brand-mark">★</span>
+    <h1>VICE SUNSET</h1>
+    <span class="brand-sub">GTA 6 cover maker · Leonida</span>
+  </div>
+  <div class="top-actions">
+    <button id="undoBtn" type="button" disabled>↩ Undo</button>
+    <button id="redoBtn" type="button" disabled>↪ Redo</button>
+  </div>
+</header>
+
+<main class="editor">
+  <section class="stage">
+    <canvas id="preview" width="540" height="675" aria-label="Cover preview"></canvas>
+    <p id="panelLabel" class="hint">Panel 1 of 5 — drag to reposition, scroll to zoom</p>
+    <div class="zoom-row">
+      <label for="zoomRange">Zoom</label>
+      <input id="zoomRange" type="range" min="100" max="300" value="100">
+      <span id="zoomVal">100%</span>
+    </div>
+  </section>
+
+  <aside class="controls">
+    <section class="panel">
+      <h2>1 · Photo</h2>
+      <div class="btn-row">
+        <button id="uploadBtn" type="button">Upload photo</button>
+        <button id="fillAllBtn" type="button">Fill all panels</button>
+      </div>
+      <div class="btn-row">
+        <button id="sampleBoulevard" type="button">Sample: Boulevard</button>
+        <button id="samplePier" type="button">Sample: Pier</button>
+      </div>
+      <div class="btn-row">
+        <button id="sampleAllBtn" type="button">Sample in every panel</button>
+        <button id="clearPanelBtn" type="button">Clear panel</button>
+      </div>
+      <input id="fileInput" type="file" accept="image/*" hidden>
+      <input id="fileInputAll" type="file" accept="image/*" hidden>
+      <p class="note">Photos stay on your machine — nothing is uploaded.</p>
+    </section>
+
+    <section class="panel">
+      <h2>2 · Layout</h2>
+      <div class="btn-row wrap">
+        <button type="button" data-layout="hero" class="active">Hero</button>
+        <button type="button" data-layout="fullbleed">Fullbleed</button>
+        <button type="button" data-layout="grid">Grid</button>
+        <button type="button" data-layout="tilted">Tilted</button>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>3 · Grade</h2>
+      <div class="btn-row wrap">
+        <button type="button" data-grade="sunset" class="active">Sunset</button>
+        <button type="button" data-grade="neon">Neon</button>
+        <button type="button" data-grade="dusk">Dusk</button>
+        <button type="button" data-grade="mono">Mono Noir</button>
+      </div>
+      <button id="inkBtn" type="button" class="wide">Poster Ink treatment</button>
+    </section>
+
+    <section class="panel">
+      <h2>4 · Lettering</h2>
+      <label class="field">Title
+        <input id="titleInput" type="text" value="VICE SUNSET" maxlength="24">
+      </label>
+      <label class="field">Subtitle
+        <input id="subtitleInput" type="text" value="A LEONIDA STORY" maxlength="40">
+      </label>
+      <label class="field">Tagline
+        <input id="taglineInput" type="text" value="Two outlaws. One sunset." maxlength="60">
+      </label>
+    </section>
+
+    <section class="panel heat">
+      <h2>Heat meter</h2>
+      <div class="heat-bar"><div id="heatFill"></div></div>
+      <div class="heat-row"><span id="heatNum">82°</span><span id="heatLabel">HOT</span></div>
+      <p class="note">Grades, photos and ink push the heat up.</p>
+    </section>
+
+    <section class="panel">
+      <h2>5 · Export PNG</h2>
+      <div class="btn-row wrap">
+        <button type="button" data-export="square">1080 × 1080</button>
+        <button type="button" data-export="portrait">1080 × 1350</button>
+        <button type="button" data-export="wide">1920 × 1080</button>
+      </div>
+      <p id="exportStatus" class="note"></p>
+    </section>
+  </aside>
+</main>
+
+<script type="module" src="src/main.js"></script>
+</body>
+</html>

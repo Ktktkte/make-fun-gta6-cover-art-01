@@ -1,0 +1,122 @@
+@font-face {
+  font-family: "Anton";
+  src: url("fonts/Anton-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: #0d0714;
+  color: #f2e9f5;
+  font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+  min-height: 100vh;
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 20px;
+  background: linear-gradient(90deg, #2a0f3d, #5c1445 55%, #8a2a3c);
+  border-bottom: 3px solid #ffb347;
+}
+
+.brand { display: flex; align-items: baseline; gap: 12px; }
+.brand-mark { color: #ffd76a; font-size: 26px; }
+.brand h1 {
+  font-family: "Anton", sans-serif;
+  font-size: 30px;
+  letter-spacing: 2px;
+  margin: 0;
+  background: linear-gradient(180deg, #ffe08a, #ff6a5e);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.brand-sub { color: #ffd9e8; font-size: 13px; letter-spacing: 1px; }
+
+.top-actions button,
+.controls button {
+  font-family: inherit;
+  font-size: 14px;
+  color: #f2e9f5;
+  background: #241433;
+  border: 1px solid #6b3a7d;
+  border-radius: 8px;
+  padding: 8px 12px;
+  cursor: pointer;
+}
+.top-actions button:hover:not(:disabled),
+.controls button:hover:not(:disabled) { background: #3a2050; border-color: #ffb347; }
+.controls button.active { background: #ff5e7a; border-color: #ffd76a; color: #191019; font-weight: 700; }
+button:disabled { opacity: 0.4; cursor: default; }
+
+.editor {
+  display: flex;
+  gap: 24px;
+  padding: 20px;
+  max-width: 1180px;
+  margin: 0 auto;
+  align-items: flex-start;
+}
+
+.stage { flex: 0 0 auto; text-align: center; }
+#preview {
+  max-width: 560px;
+  max-height: 640px;
+  border: 3px solid #3a2050;
+  border-radius: 6px;
+  background: #191019;
+  cursor: grab;
+  touch-action: none;
+}
+#preview:active { cursor: grabbing; }
+.hint { color: #c9a8d8; font-size: 13px; margin: 10px 0 6px; }
+.zoom-row { display: flex; align-items: center; justify-content: center; gap: 10px; font-size: 13px; }
+.zoom-row input { width: 220px; accent-color: #ff5e7a; }
+
+.controls { flex: 1 1 auto; display: flex; flex-direction: column; gap: 14px; min-width: 300px; }
+.panel {
+  background: #1a0f26;
+  border: 1px solid #3a2050;
+  border-radius: 10px;
+  padding: 14px;
+}
+.panel h2 { font-family: "Anton", sans-serif; font-size: 17px; letter-spacing: 1px; margin: 0 0 10px; color: #ffd76a; }
+.btn-row { display: flex; gap: 8px; margin-bottom: 8px; }
+.btn-row.wrap { flex-wrap: wrap; }
+.btn-row button { flex: 1 1 auto; }
+.wide { width: 100%; margin-top: 4px; }
+.field { display: block; font-size: 13px; color: #c9a8d8; margin-bottom: 8px; }
+.field input {
+  display: block;
+  width: 100%;
+  margin-top: 4px;
+  padding: 8px 10px;
+  font-size: 15px;
+  color: #f2e9f5;
+  background: #241433;
+  border: 1px solid #6b3a7d;
+  border-radius: 6px;
+}
+.note { font-size: 12px; color: #a98bb8; margin: 6px 0 0; }
+.heat-bar { height: 14px; background: #241433; border-radius: 7px; overflow: hidden; border: 1px solid #6b3a7d; }
+#heatFill {
+  height: 100%;
+  width: 82%;
+  background: linear-gradient(90deg, #ffd76a, #ff6a5e, #ff2e88);
+  transition: width 0.25s ease;
+}
+.heat-row { display: flex; justify-content: space-between; margin-top: 6px; font-family: "Anton", sans-serif; font-size: 18px; letter-spacing: 1px; }
+#heatNum { color: #ffd76a; }
+#heatLabel { color: #ff5e7a; }
+#exportStatus { min-height: 16px; }
+
+@media (max-width: 900px) {
+  .editor { flex-direction: column; }
+  #preview { max-width: 100%; }
+}
