@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vice Sunset — GTA 6 Cover Maker</title>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand"><span class="brand-mark">VS</span> VICE SUNSET</div>
+  <div class="brand-sub">GTA 6 Cover Maker — offline, your photos stay on your machine</div>
+</header>
+
+<main class="app">
+  <section class="stage">
+    <canvas id="preview" width="640" height="640" aria-label="Cover preview"></canvas>
+    <p class="hint">Click a panel to select it, drag to move its photo, scroll to zoom. Load a photo into the selected panel.</p>
+    <div class="panel-row" id="panelPick">
+      <button type="button">Hero ○</button>
+      <button type="button">Panel 1 ○</button>
+      <button type="button">Panel 2 ○</button>
+      <button type="button">Panel 3 ○</button>
+      <button type="button">Panel 4 ○</button>
+    </div>
+    <label class="file-label">Load photo into selected panel
+      <input type="file" id="fileInput" accept="image/*">
+      <span id="photoName">painted art</span>
+    </label>
+  </section>
+
+  <aside class="controls">
+    <label class="field">Title
+      <input type="text" id="titleInput" value="VICE SUNSET" maxlength="24">
+    </label>
+    <label class="field">Subtitle
+      <input type="text" id="subtitleInput" value="Welcome to Leonida" maxlength="48">
+    </label>
+    <label class="field">Tagline
+      <input type="text" id="taglineInput" value="One city. Two outlaws. No way back." maxlength="64">
+    </label>
+
+    <h2>Layout</h2>
+    <div class="btn-row" id="layouts">
+      <button type="button" data-layout="hero">Hero</button>
+      <button type="button" data-layout="fullbleed">Fullbleed</button>
+      <button type="button" data-layout="grid">Grid</button>
+      <button type="button" data-layout="tilted">Tilted</button>
+    </div>
+
+    <h2>Grade</h2>
+    <div class="btn-row" id="grades">
+      <button type="button" data-grade="sunset">Sunset</button>
+      <button type="button" data-grade="neon">Neon</button>
+      <button type="button" data-grade="dusk">Dusk</button>
+      <button type="button" data-grade="mono">Mono Noir</button>
+      <button type="button" data-grade="ink">Poster Ink</button>
+    </div>
+
+    <h2>Export size</h2>
+    <div class="btn-row" id="sizes">
+      <button type="button" data-size="square">1080 × 1080</button>
+      <button type="button" data-size="portrait">1080 × 1350</button>
+      <button type="button" data-size="wide">1920 × 1080</button>
+    </div>
+
+    <div class="heat">
+      <div class="heat-head"><span>Heat meter</span><span id="heatScore">—</span></div>
+      <div class="heat-bar"><div id="heatFill"></div></div>
+    </div>
+
+    <div class="actions">
+      <button type="button" id="undoBtn">Undo</button>
+      <button type="button" id="redoBtn">Redo</button>
+      <button type="button" id="exportBtn" class="primary">Export PNG</button>
+    </div>
+    <p class="foot">Five panels, four layouts, five grades. Panels without a photo paint their own sunset skyline. No Rockstar logos or artwork — all art is original.</p>
+  </aside>
+</main>
+
+<script type="module" src="./src/main.js"></script>
+</body>
+</html>
