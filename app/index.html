@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vice After Dark — Neon Cover Maker</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">
+    <span class="brand-mark">VAD</span>
+    <span class="brand-name">VICE AFTER DARK</span>
+    <span class="brand-sub">neon cover maker</span>
+  </div>
+  <button id="exportBtn" class="export-btn" type="button">Export PNG</button>
+</header>
+
+<main class="workspace" id="workspace">
+  <section class="preview-pane">
+    <div class="preview-frame">
+      <canvas id="coverPreview" width="960" height="540"></canvas>
+      <p class="preview-hint" id="previewHint">Click a panel to select it, then drag on the preview to move its photo.</p>
+    </div>
+    <div class="size-row" id="sizeRow" role="group" aria-label="Post size"></div>
+  </section>
+
+  <aside class="controls" id="controls">
+    <section class="panel-block" id="photosBlock">
+      <h2>Photos</h2>
+      <label class="dropzone" id="dropzone">
+        <input id="photoInput" type="file" accept="image/*" multiple hidden>
+        <span class="dropzone-text">Drop photos here or click to load</span>
+        <span class="dropzone-note">Photos never leave your machine.</span>
+      </label>
+      <div class="thumbs" id="thumbs"></div>
+    </section>
+
+    <section class="panel-block">
+      <h2>Layout</h2>
+      <div class="chip-grid" id="layoutRow"></div>
+    </section>
+
+    <section class="panel-block">
+      <h2>Grade</h2>
+      <div class="chip-grid" id="gradeRow"></div>
+    </section>
+
+    <section class="panel-block">
+      <h2>Caption</h2>
+      <label class="field">Title
+        <input id="titleInput" type="text" maxlength="40" value="VICE AFTER DARK">
+      </label>
+      <label class="field">Subtitle
+        <input id="subtitleInput" type="text" maxlength="60" value="Neon Coast nights">
+      </label>
+      <label class="field">Badge ribbon
+        <input id="badgeInput" type="text" maxlength="30" value="VICE CITY • 2026">
+      </label>
+      <label class="field">Title size
+        <input id="titleSizeInput" type="range" min="60" max="140" value="100">
+      </label>
+      <label class="field">Heat meter (stars)
+        <input id="starsInput" type="range" min="1" max="5" step="1" value="4">
+      </label>
+    </section>
+
+    <section class="panel-block">
+      <h2>Selected panel</h2>
+      <label class="field">Photo in this panel
+        <select id="panelPhotoSelect"></select>
+      </label>
+      <label class="field">Zoom
+        <input id="panelZoomInput" type="range" min="100" max="300" value="100">
+      </label>
+      <p class="panel-note" id="panelNote">Panel 1 selected.</p>
+    </section>
+
+    <section class="panel-block history-block">
+      <h2>History</h2>
+      <div class="history-row">
+        <button id="undoBtn" type="button">Undo</button>
+        <button id="redoBtn" type="button">Redo</button>
+      </div>
+    </section>
+  </aside>
+</main>
+
+<footer class="footnote">
+  <span>Offline by design — no uploads, no network.</span>
+  <span>Fonts: Anton &amp; Pacifico (SIL Open Font License). Sample photos: free to use.</span>
+</footer>
+
+<script src="cover.js"></script>
+<script src="editor.js"></script>
+</body>
+</html>
